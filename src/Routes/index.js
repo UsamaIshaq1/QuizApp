@@ -12,16 +12,12 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Loader/>
-      {!isLogin ? (
+     
         <Stack.Navigator initialRouteName="Login" headerMode="none">
           <Stack.Screen name="Login" component={Login} />
-        </Stack.Navigator>
-      ) : (
-        <Stack.Navigator initialRouteName="Dashboard" headerMode="none">
           <Stack.Screen name="Dashboard" component={Dashboard} />
-          <Stack.Screen name="Score" component={Score} />
         </Stack.Navigator>
-      )}
+
     </NavigationContainer>
   );
 }

@@ -6,25 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ScreenWrapper } from '../../components/ScreenWrapper';
 import AppColors from '../../utills/AppColors';
 import { height, width } from 'react-native-dimension';
-import firestore from '@react-native-firebase/firestore';
-import { setLoaderVisible } from '../../Redux/Actions/Config';
 import { totalScore } from '../../Redux/Actions/Score';
 import BGImage from '../../assets/images/f.jpg';
+
 let point = 0;
-const generate = () =>{
-  var numbers = [0,1, 2, 3, 4,5,6,7,8,9,10];
-  function shuffle(o) {
-      for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-      return o;
-  };
-  var randoms = shuffle(numbers);
-  return randoms;
-}
+let da=0;
 export default function Dashboard({navigation}) {
   // defined stats
-  
+  const quest = useSelector((state) => state.Questions.questions);
+  const ran = useSelector((state) => state.Questions.randomQuestions);
 
-  const [quest, setQuest] = useState([]);
   const [focusQuestion, setFocusQuestion] = useState(null);
   const [count, setCount] = useState(0);
   const [selectedAnswer,setSelectedAnswer]= useState(null);
@@ -42,68 +33,18 @@ export default function Dashboard({navigation}) {
   // };
 
   // get data  from firebase
-const getQuestions = async () =>{
-  let list =[];
-  //const QuerySnap = 
-  await firestore().collection('Questions')
-        .get().then((QuerySnapshot) =>{
-          QuerySnapshot.forEach((doc) => {
-            const {
-              qID,
-              qn,
-              op1,
-              op2,
-              op3,
-              op4,
-              ans
-            } = doc.data();
-            list.push({
-              id:doc.id,
-              qID,
-              qn,
-              op1,
-              op2,
-              op3,
-              op4,
-              ans
-            })
-        }); 
-      });
-      setQuest(list);
-}  
 
 
 
 useEffect(async ()  => {
-  await getQuestions();
-  dispatch(setLoaderVisible(false));
+  initialLoad();
   },[])
-  const initialLoad=async()=>{
-    let da= await  genRan();
-      setFocusQuestion(quest[da]);
+  const initialLoad=()=>{
+      setFocusQuestion(quest[ran[da]]);
     }
-  
-  if(!focusQuestion){
-    setTimeout(initialLoad,10);
-  }
 
 
 // generate random questions
-const genRan = () =>{
-  
-   var random = generate();
-  console.log(random);
-  if( random.length >= 0 ) {
-    var num= random.pop();
-    console.log(num)
-    return num
-  }
-  // let min=0;
-  // let max=11;
-
-  // let ran= Math.floor(Math.random() * (max - min + 1) ) + min;
-  // return ran;
-}
 
 // check for answer
 const checkAnswer =() =>{  
@@ -126,12 +67,13 @@ const checkAnswer =() =>{
         checkAnswer();
         dispatch(totalScore(point));
         point=0;
-        navigation.navigate('Score');
+        da=0;
+        navigation.navigate('Login');
         setCount(0);
       }else{
         checkAnswer();
-        let da=   genRan();
-        setFocusQuestion(quest[da]);
+        da=da +1;
+        setFocusQuestion(quest[ran[da]]);
       }
       setCount(count+1); 
     }
