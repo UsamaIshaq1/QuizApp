@@ -6,27 +6,17 @@ const styles = StyleSheet.create({
   mainViewContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
-  questionText:{
+  yourScore:{
     textAlign:'center',
-    color: AppColors.white,
-    fontSize:height(2.4),
+    fontSize:width(15),
+    color:AppColors.white
   },
-  answerText:{
+  score:{
+    fontSize:width(25),
     textAlign:'center',
-    color: AppColors.white,
-    fontSize:height(2.5),
-  },
-  answerBox:{
-    backgroundColor:AppColors.primary,
-    justifyContent:'center',
-    borderColor:AppColors.white,
-    borderTopRightRadius:width(5),
-    borderBottomLeftRadius:width(5),
-    width:width(70),
-    height:height(8),
-    margin:width(2.5),
+    color:AppColors.white
   },
   questionBox:{
     backgroundColor:AppColors.primary,
@@ -35,7 +25,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius:width(5),
     borderBottomLeftRadius:width(5),
     width:width(85),
-    height:height(20),
+    height:height(30),
     margin:width(2.5),
     padding:width(.6)
   }

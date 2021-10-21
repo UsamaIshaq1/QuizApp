@@ -7,9 +7,9 @@ import styles from './styles'
 export default function Loader() {
   const isLoaderVisible = useSelector((state) => state.Config.isLoaderVisible);
   return (
-    <Modal isVisible={isLoaderVisible} backdropOpacity={0.4}>
-      <View style = {styles.container}>
-        <ActivityIndicator size="large" color={AppColors.black} />
+    <Modal isVisible={isLoaderVisible} backdropOpacity={1}>
+      <View >
+        <ActivityIndicator size="large" color={AppColors.primary} />
       </View>
     </Modal>
   );

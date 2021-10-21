@@ -6,8 +6,9 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: width(5),
-    backgroundColor: AppColors.green,
+    borderTopRightRadius:width(5),
+    borderBottomLeftRadius:width(5),
+    backgroundColor: AppColors.primary,
     height: height(6),
     width: width(80),
     alignSelf: 'center',

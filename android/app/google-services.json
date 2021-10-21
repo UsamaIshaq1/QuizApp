@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "802233878503",
+    "project_id": "quiz-e90e5",
+    "storage_bucket": "quiz-e90e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802233878503:android:86b9a43c4e2af0a32c5f42",
+        "android_client_info": {
+          "package_name": "com.reactnativeboilerplacehermes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802233878503-j4qg055jelbisdvr4c0fe092jthlell2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWv7RGNdLkPgTzNOCP8WoZGL_y_e56G2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802233878503-j4qg055jelbisdvr4c0fe092jthlell2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
